@@ -1,34 +1,23 @@
-package app.gui.lab3;
-
-import app.gui.menu.MenuGUI;
+package app.gui.lab5;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Lab3GUI extends JFrame {
+public class Lab5GUI extends JFrame {
     private JLabel image1Label;
     private JLabel image2Label;
-    private JLabel image3Label;
-    public JMenuBar menuBar;
+    private JSpinner spinner;
 
-    public Lab3GUI() {
+    public Lab5GUI() {
         super();
         initWindow();
     }
 
-    public Lab3GUI(ImageIcon image1Icon, ImageIcon image2Icon) {
+    public Lab5GUI(ImageIcon image1Icon, ImageIcon image2Icon) {
         this();
 
         image1Label.setIcon(image1Icon);
         image2Label.setIcon(image2Icon);
-    }
-
-    public Lab3GUI(ImageIcon image1Icon, ImageIcon image2Icon, ImageIcon image3Icon) {
-        this();
-
-        image1Label.setIcon(image1Icon);
-        image2Label.setIcon(image2Icon);
-        image3Label.setIcon(image3Icon);
     }
 
     private void initWindow() {
@@ -44,15 +33,13 @@ public class Lab3GUI extends JFrame {
 
         image1Label = new JLabel();
         image2Label = new JLabel();
-        image3Label = new JLabel();
+
+        SpinnerModel model = new SpinnerNumberModel(50, 0, 200, 1);
+        spinner = new JSpinner(model);
 
         mainPanel.add(image1Label, BorderLayout.LINE_START);
         mainPanel.add(image2Label, BorderLayout.LINE_END);
-        mainPanel.add(image3Label, BorderLayout.PAGE_END);
-
-        // menuBar
-        menuBar = new Lab3MenuGUI(image1Label, image2Label, image3Label);
-        this.setJMenuBar(menuBar);
+        mainPanel.add(spinner, BorderLayout.PAGE_START);
 
         setSize(new Dimension(800, 800));
     }

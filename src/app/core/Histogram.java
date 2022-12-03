@@ -13,16 +13,16 @@ public class Histogram {
 
         int channels = image.getColorModel().getNumComponents();
 
-        rgb = new int[3][width * height];
-        mono = new int[width * height];
+        rgb = new int[3][width * height + 1];
+        mono = new int[width * height + 1];
 
         final byte[] a = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
 
         if (channels == 3) {
             for (int i = 0; i < width * height * 3; i += 3) {
-                rgb[0][i] = a[i + 2] & 0xFF;
-                rgb[1][i] = a[i + 1] & 0xFF;
-                rgb[2][i] = a[i] & 0xFF;
+                rgb[0][i / 3] = a[i + 2] & 0xFF;
+                rgb[1][i / 3] = a[i + 1] & 0xFF;
+                rgb[2][i / 3] = a[i] & 0xFF;
             }
             for (int i = 0; i < width * height; ++i) mono[i] = rgb[0][i] + rgb[1][i] + rgb[2][i];
         } else {
@@ -33,6 +33,5 @@ public class Histogram {
                 rgb[2][i] = a[i] & 0xFF;
             }
         }
-
     }
 }

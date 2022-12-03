@@ -35,7 +35,7 @@ public class ImageMenuGUI extends JMenu {
         this.add(openButton);
 
         JMenuItem saveButton = new JMenuItem("Zapisz");
-        saveButton.setEnabled(false);
+//        saveButton.setEnabled(false);
         saveButton.addActionListener(e -> {
             BufferedImage bufferedImage = ImageEditEngine.originalImageBuffer;
             String fullFileName = ImageEditEngine.imageFile.getName();
@@ -52,7 +52,7 @@ public class ImageMenuGUI extends JMenu {
         this.add(saveButton);
 
         JMenuItem saveAsButton = new JMenuItem("Zapisz jako...");
-        saveAsButton.setEnabled(false);
+//        saveAsButton.setEnabled(false);
         saveAsButton.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Wybierz gdzie zapisać obrazek");
