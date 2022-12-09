@@ -1,7 +1,9 @@
 package app.gui.menu;
 
 import app.ImageEditEngine;
+import app.core.BinaryOperations;
 import app.gui.lab3.Lab3GUI;
+import app.gui.lab3.Lab3OptionsWindowGUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,16 +13,14 @@ public class Lab3SubMenuGUI extends JMenu {
     public Lab3SubMenuGUI(JLabel mLabel) {
         super("Lab3");
 
-        JMenuItem chooseSecondImage = new JMenuItem("Drugi obrazek...");
+        JMenuItem chooseSecondImage = new JMenuItem("Otwórz panel narzędzi");
         chooseSecondImage.addActionListener(e -> {
-            System.out.println("Wybierz drugi obrazek");
-
-            ImageEditEngine.openFileChooseDialog();
-            ImageIcon image = ImageEditEngine.openImage();
-            if(image != null) {
-                Lab3GUI okienko = new Lab3GUI((ImageIcon)mLabel.getIcon(), image);
-                okienko.setVisible(true);
-            }
+//            ImageEditEngine.openFileChooseDialog();
+//            ImageIcon image = ImageEditEngine.openImage();
+//            if(image != null) {
+            Lab3GUI okienko = new Lab3GUI((ImageIcon) mLabel.getIcon());
+            okienko.setVisible(true);
+//            }
         });
 
         this.add(chooseSecondImage);
@@ -28,29 +28,35 @@ public class Lab3SubMenuGUI extends JMenu {
 
     public Lab3SubMenuGUI(JLabel image1, JLabel image2, JLabel result) {
         super("Lab3");
-        JMenuItem dodajObrazZWysyceniem = new JMenuItem("Dodaj obrazki");
+        JMenuItem dodajObrazZWysyceniem = new JMenuItem("Dodaj obrazki z wysyceniem");
         dodajObrazZWysyceniem.addActionListener(e -> {
-            ImageIcon ico1 = (ImageIcon)image1.getIcon();
-            ImageIcon ico2 = (ImageIcon)image2.getIcon();
+            ImageIcon ico1 = (ImageIcon) image1.getIcon();
+            ImageIcon ico2 = (ImageIcon) image2.getIcon();
 
             Image img1 = ico1.getImage();
             Image img2 = ico2.getImage();
 
-            int w = img1.getWidth(null);
-            int h = img1.getHeight(null);
+            BinaryOperations binaryOperations = new BinaryOperations((BufferedImage) img1, (BufferedImage) img2);
 
-            BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-
-            Graphics g = combined.getGraphics();
-            g.drawImage(img1, 0, 0, null);
-            g.drawImage(img2, 0, 0, null);
-
-            g.dispose();
-
-            result.setIcon(new ImageIcon(combined));
+            result.setIcon(new ImageIcon(binaryOperations.addImages(true)));
         });
 
         this.add(dodajObrazZWysyceniem);
+
+        JMenuItem dodajObrazBezWysycenia = new JMenuItem("Dodaj obrazki bez wysycenia");
+        dodajObrazBezWysycenia.addActionListener(e -> {
+            ImageIcon ico1 = (ImageIcon) image1.getIcon();
+            ImageIcon ico2 = (ImageIcon) image2.getIcon();
+
+            Image img1 = ico1.getImage();
+            Image img2 = ico2.getImage();
+
+            BinaryOperations binaryOperations = new BinaryOperations((BufferedImage) img1, (BufferedImage) img2);
+
+            result.setIcon(new ImageIcon(binaryOperations.addImages(false)));
+        });
+
+        this.add(dodajObrazBezWysycenia);
 
         JMenuItem dodajLiczbeCalkowita = new JMenuItem("Dodaj liczbę całkowitą");
         dodajLiczbeCalkowita.addActionListener(e -> {

@@ -12,10 +12,16 @@ public class Lab3GUI extends JFrame {
     public JMenuBar menuBar;
 
     public Lab3GUI() {
-        super();
+        super("Lab 3 - Obrazki");
         initWindow();
     }
 
+    public Lab3GUI(ImageIcon image1Icon) {
+        this();
+        image1Label.setIcon(image1Icon);
+
+        new Lab3OptionsWindowGUI(image1Label, image2Label, image3Label).setVisible(true);
+    }
     public Lab3GUI(ImageIcon image1Icon, ImageIcon image2Icon) {
         this();
 
@@ -51,8 +57,8 @@ public class Lab3GUI extends JFrame {
         mainPanel.add(image3Label, BorderLayout.PAGE_END);
 
         // menuBar
-        menuBar = new Lab3MenuGUI(image1Label, image2Label, image3Label);
-        this.setJMenuBar(menuBar);
+//        menuBar = new Lab3MenuGUI(image1Label, image2Label, image3Label);
+//        this.setJMenuBar(menuBar);
 
         setSize(new Dimension(800, 800));
     }
