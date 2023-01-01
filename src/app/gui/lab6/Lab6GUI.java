@@ -1,20 +1,22 @@
-package app.gui.lab4;
+package app.gui.lab6;
+
+import app.gui.lab4.Lab4ToolsWindowGUI;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Lab4GUI extends JFrame {
+public class Lab6GUI extends JFrame {
 
     private JLabel imageLabel;
     private JLabel resultLabel;
 
-    public Lab4GUI(ImageIcon image1Icon) {
-        super("Lab4 - obrazki");
+    public Lab6GUI(ImageIcon image1Icon) {
+        super("Lab6 - obrazki");
 
         initWindow();
         imageLabel.setIcon(image1Icon);
 
-        new Lab4ToolsWindowGUI(imageLabel, resultLabel).setVisible(true);
+        new Lab6ToolsWindowGUI(imageLabel, resultLabel).setVisible(true);
     }
 
     private void initWindow() {
@@ -36,4 +38,5 @@ public class Lab4GUI extends JFrame {
 
         setSize(new Dimension(800, 800));
     }
+
 }

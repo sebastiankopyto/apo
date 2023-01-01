@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
-public class Lab3OptionsWindowGUI extends JFrame {
+public class Lab3ToolsWindowGUI extends JFrame {
 
     private JLabel pierwszaLabel;
     private JLabel drugaLabel;
@@ -25,7 +25,7 @@ public class Lab3OptionsWindowGUI extends JFrame {
     private JButton zastosujButton;
 
 
-    public Lab3OptionsWindowGUI(JLabel firstLabel, JLabel secondLabel, JLabel resultLabel) {
+    public Lab3ToolsWindowGUI(JLabel firstLabel, JLabel secondLabel, JLabel resultLabel) {
         super("Panel - Lab3");
 
         pierwszaLabel = firstLabel;
@@ -220,7 +220,7 @@ public class Lab3OptionsWindowGUI extends JFrame {
                         wynikowaLabel.setIcon(new ImageIcon(result));
                         break;
                     }
-                    case "XOS": {
+                    case "XOR": {
                         ImageIcon ico2 = (ImageIcon) drugaLabel.getIcon();
                         Image img2 = ico2.getImage();
                         BinaryOperations bo = new BinaryOperations((BufferedImage) img1, (BufferedImage) img2);

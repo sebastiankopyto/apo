@@ -1,9 +1,7 @@
 package app.gui.menu;
 
-import app.ImageEditEngine;
 import app.core.BinaryOperations;
 import app.gui.lab3.Lab3GUI;
-import app.gui.lab3.Lab3OptionsWindowGUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,12 +13,8 @@ public class Lab3SubMenuGUI extends JMenu {
 
         JMenuItem chooseSecondImage = new JMenuItem("Otwórz panel narzędzi");
         chooseSecondImage.addActionListener(e -> {
-//            ImageEditEngine.openFileChooseDialog();
-//            ImageIcon image = ImageEditEngine.openImage();
-//            if(image != null) {
             Lab3GUI okienko = new Lab3GUI((ImageIcon) mLabel.getIcon());
             okienko.setVisible(true);
-//            }
         });
 
         this.add(chooseSecondImage);

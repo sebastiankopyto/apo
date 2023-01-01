@@ -1,7 +1,5 @@
 package app.gui.lab3;
 
-import app.gui.menu.MenuGUI;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,7 +7,6 @@ public class Lab3GUI extends JFrame {
     private JLabel image1Label;
     private JLabel image2Label;
     private JLabel image3Label;
-    public JMenuBar menuBar;
 
     public Lab3GUI() {
         super("Lab 3 - Obrazki");
@@ -20,7 +17,7 @@ public class Lab3GUI extends JFrame {
         this();
         image1Label.setIcon(image1Icon);
 
-        new Lab3OptionsWindowGUI(image1Label, image2Label, image3Label).setVisible(true);
+        new Lab3ToolsWindowGUI(image1Label, image2Label, image3Label).setVisible(true);
     }
     public Lab3GUI(ImageIcon image1Icon, ImageIcon image2Icon) {
         this();
@@ -55,10 +52,6 @@ public class Lab3GUI extends JFrame {
         mainPanel.add(image1Label, BorderLayout.LINE_START);
         mainPanel.add(image2Label, BorderLayout.LINE_END);
         mainPanel.add(image3Label, BorderLayout.PAGE_END);
-
-        // menuBar
-//        menuBar = new Lab3MenuGUI(image1Label, image2Label, image3Label);
-//        this.setJMenuBar(menuBar);
 
         setSize(new Dimension(800, 800));
     }

@@ -17,7 +17,8 @@ public class MenuGUI extends JMenuBar {
         this.add(new Lab1SubMenuGUI(gui, mLabel, toolsPanel));
         this.add(new Lab2SubMenuGUI());
         this.add(new Lab3SubMenuGUI(mLabel));
-        this.add(new Lab4SubMenuGUI());
+        this.add(new Lab4SubMenuGUI(mLabel));
         this.add(new Lab5SubMenuGUI(mLabel));
+        this.add(new Lab6SubMenuGUI(mLabel));
     }
 }
